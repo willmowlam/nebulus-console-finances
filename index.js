@@ -95,7 +95,7 @@ var finances = [
 // !The total number of months included in the dataset.
   // finances.length
 
-// !The net total amount of Profit / Losses over the entire period.
+// The net total amount of Profit / Losses over the entire period.
   // Need a variable for Profits/Losses
   // Need to be able to compare the data for the loop that we're on to the data from the previous loop
     // Need variables for current & previous once we start the loop
@@ -107,12 +107,12 @@ var finances = [
 // You will need to track what the total change in Profit / Losses are from month to month and then find the average.
 // (Total / (Number of months - 1))
 
-// The greatest increase in Profit / Losses(date and amount) over the entire period.
+// ! The greatest increase in Profit / Losses(date and amount) over the entire period.
   // Need a variable for the greatest increase
   // On each iteration, compare the current change in profits/losses to what's currently stored
   // If the change is more, replace what's currently stored in the variable
 
-// The greatest decrease in Profit / Losses(date and amount) over the entire period.
+// ! The greatest decrease in Profit / Losses(date and amount) over the entire period.
   // Need a variable for the greatest decrease
   // On each iteration, compare the current change in profits/losses to what's currently stored
   // If the loss is greater, replace what's currently stored in the variable
@@ -128,7 +128,7 @@ let totalProfit = 0;
 let greatestIncrease = ["", 0];
 
 // greatest loss (month & amt)
-let greatestLoss = [];
+let greatestLoss = ["", 0];
 
 // average of the changes
 let averageChange = 0;
@@ -146,12 +146,23 @@ for (let i = 0; i < finances.length; i++) {
     let currentMonth = finances[i][0];
     let currentAmount = finances[i][1];
     
-    // calculate the rolling profit
-    totalProfit = currentAmount - previousAmount;
+    // Calculate this month's profit
+    monthProfit = currentAmount - previousAmount;
 
-    // Check if current month profit is more than greatest saved so far and save the data point 
-    if (greatestIncrease[1] < (currentAmount - previousAmount)){
-      greatestIncrease = finances[i];
+    // For all Profits
+    if (monthProfit > 0) {
+      // Check if current month profit is more than greatest saved so far and save the data point 
+      if (greatestIncrease[1] < monthProfit){
+        greatestIncrease = [finances[i][0], monthProfit];
+      }
+    }
+
+    // For all Losses
+    if (monthProfit < 0 ) {
+      // Check if current month profit is less than greatest loss saved so far and save the data point 
+      if (greatestLoss[1] > monthProfit){
+        greatestLoss = [finances[i][0], monthProfit];
+      }
     }
 
   }
@@ -166,5 +177,5 @@ Total Months: ${totalMonths}
 Total: $${totalProfit}
 Average Change: -2315.12
 Greatest Increase in Profits/Losses: ${greatestIncrease[0]} ($${greatestIncrease[1]})
-Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
+Greatest Decrease in Profits/Losses: ${greatestLoss[0]} ($${greatestLoss[1]})
 `);
