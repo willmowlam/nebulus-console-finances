@@ -117,19 +117,43 @@ var finances = [
   // On each iteration, compare the current change in profits/losses to what's currently stored
   // If the loss is greater, replace what's currently stored in the variable
 
-// variables:
-// total number of months
-// rolling total of profits
-// greatest increase (month & amt)
-// greatest loss (month & amt)
-// average of the changes
-
 // variables declared inside the loop:
 // current data point
 // previous data point
 
+// total number of months
 let totalMonths = finances.length;
 
+// rolling total of profits
+let totalProfit = 0;
+
+// greatest increase (month & amt)
+let greatestIncrease = [];
+
+// greatest loss (month & amt)
+let greatestLoss = [];
+
+// average of the changes
+let averageChange = 0;
+
+
+// Loop the dataset
+for (let i = 0; i < finances.length; i++) {
+
+  // Only calculate from the second month
+  if (i > 0 ) {
+
+    // Create variables for making comparison
+    let previousMonth = finances[i - 1][0];
+    let previousAmount = finances[i - 1][0];
+    let currentMonth = finances[i][0];
+    let currentAmount = finances[i][0];
+    
+  }
+
+}
+
+// Output the analysis
 console.log(
 `Financial Analysis
 ----------------
