@@ -95,7 +95,7 @@ var finances = [
 // !The total number of months included in the dataset.
   // finances.length
 
-// The net total amount of Profit / Losses over the entire period.
+// !The net total amount of Profit / Losses over the entire period.
   // Need a variable for Profits/Losses
   // Need to be able to compare the data for the loop that we're on to the data from the previous loop
     // Need variables for current & previous once we start the loop
@@ -125,7 +125,7 @@ let totalMonths = finances.length;
 let totalProfit = 0;
 
 // greatest increase (month & amt)
-let greatestIncrease = [];
+let greatestIncrease = ["", 0];
 
 // greatest loss (month & amt)
 let greatestLoss = [];
@@ -148,7 +148,12 @@ for (let i = 0; i < finances.length; i++) {
     
     // calculate the rolling profit
     totalProfit = currentAmount - previousAmount;
-    console.log(currentAmount);
+
+    // Check if current month profit is more than greatest saved so far and save the data point 
+    if (greatestIncrease[1] < (currentAmount - previousAmount)){
+      greatestIncrease = finances[i];
+    }
+
   }
 
 }
@@ -160,6 +165,6 @@ console.log(
 Total Months: ${totalMonths}
 Total: $${totalProfit}
 Average Change: -2315.12
-Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
+Greatest Increase in Profits/Losses: ${greatestIncrease[0]} ($${greatestIncrease[1]})
 Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
 `);
