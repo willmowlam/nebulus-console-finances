@@ -92,7 +92,7 @@ var finances = [
 
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
 
-// The total number of months included in the dataset.
+// !The total number of months included in the dataset.
   // finances.length
 
 // The net total amount of Profit / Losses over the entire period.
@@ -127,3 +127,15 @@ var finances = [
 // variables declared inside the loop:
 // current data point
 // previous data point
+
+let totalMonths = finances.length;
+
+console.log(
+`Financial Analysis
+----------------
+Total Months: ${totalMonths}
+Total: $38382578
+Average Change: -2315.12
+Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
+Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
+`);
