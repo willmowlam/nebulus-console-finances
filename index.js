@@ -135,36 +135,33 @@ let averageChange = 0;
 
 
 // Loop the dataset
-for (let i = 0; i < finances.length; i++) {
+for (let i = 0; i < totalMonths; i++) {
+
+  // Create variables for making comparison
+  let previousMonth = finances[i - 1][0];
+  let previousAmount = finances[i - 1][1];
+  let currentMonth = finances[i][0];
+  let currentAmount = finances[i][1];
 
   // Add up the monthly profits
-  totalProfit = totalProfit + finances[i][1];
+  totalProfit = totalProfit + currentAmount;
 
   // Only calculate from the second month
   if (i > 0 ) {
-
-    // Create variables for making comparison
-    let previousMonth = finances[i - 1][0];
-    let previousAmount = finances[i - 1][1];
-    let currentMonth = finances[i][0];
-    let currentAmount = finances[i][1];
-    
-    // Calculate this month's profit
-    monthProfit = currentAmount - previousAmount;
-
+  
     // For all Profits
-    if (monthProfit > 0) {
+    if (currentAmount > 0) {
       // Check if current month profit is more than greatest saved so far and save the data point 
-      if (greatestProfit[1] < monthProfit){
-        greatestProfit = [finances[i][0], monthProfit];
+      if (greatestProfit[1] < currentAmount){
+        greatestProfit = [currentMonth, currentAmount];
       }
     }
 
     // For all Losses
-    if (monthProfit < 0) {
+    if (currentAmount < 0) {
       // Check if current month profit is less than greatest loss saved so far and save the data point 
-      if (greatestLoss[1] > monthProfit){
-        greatestLoss = [finances[i][0], monthProfit];
+      if (greatestLoss[1] < currentAmount){
+        greatestLoss = [currentMonth, currentAmount];
       }
     }
 
