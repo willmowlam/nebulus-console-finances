@@ -159,7 +159,7 @@ for (let i = 0; i < totalMonths; i++) {
     if (currentAmount > 0) {
       // Check if current month profit is more than greatest saved so far and save the data point 
       if (greatestProfit[1] < currentAmount){
-        greatestProfit = [currentMonth, currentAmount];
+        greatestProfit = [currentMonth, changeInPL];
       }
     }
 
@@ -167,7 +167,7 @@ for (let i = 0; i < totalMonths; i++) {
     if (currentAmount < 0) {
       // Check if current month profit is less than greatest loss saved so far and save the data point 
       if (greatestLoss[1] > currentAmount){
-        greatestLoss = [currentMonth, currentAmount];
+        greatestLoss = [currentMonth, changeInPL];
       }
     }
 
