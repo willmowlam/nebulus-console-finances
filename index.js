@@ -124,8 +124,8 @@ let totalMonths = finances.length;
 // rolling total of profits
 let totalProfit = 0;
 
-// greatest increase (month & amt)
-let greatestIncrease = ["", 0];
+// greatest profit (month & amt)
+let greatestProfit = ["", 0];
 
 // greatest loss (month & amt)
 let greatestLoss = ["", 0];
@@ -155,8 +155,8 @@ for (let i = 0; i < finances.length; i++) {
     // For all Profits
     if (monthProfit > 0) {
       // Check if current month profit is more than greatest saved so far and save the data point 
-      if (greatestIncrease[1] < monthProfit){
-        greatestIncrease = [finances[i][0], monthProfit];
+      if (greatestProfit[1] < monthProfit){
+        greatestProfit = [finances[i][0], monthProfit];
       }
     }
 
@@ -179,6 +179,6 @@ console.log(
 Total Months: ${totalMonths}
 Total: $${totalProfit}
 Average Change: -2315.12
-Greatest Increase in Profits/Losses: ${greatestIncrease[0]} ($${greatestIncrease[1]})
+Greatest Increase in Profits/Losses: ${greatestProfit[0]} ($${greatestProfit[1]})
 Greatest Decrease in Profits/Losses: ${greatestLoss[0]} ($${greatestLoss[1]})
 `);
