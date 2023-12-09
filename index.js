@@ -133,22 +133,28 @@ let greatestLoss = ["", 0];
 // average of the changes
 let averageChange = 0;
 
+// save all the changes in monthly P&L
+let changesInPL = [];
 
 // Loop the dataset
 for (let i = 0; i < totalMonths; i++) {
 
-  // Create variables for making comparison
-  let previousMonth = finances[i - 1][0];
-  let previousAmount = finances[i - 1][1];
-  let currentMonth = finances[i][0];
-  let currentAmount = finances[i][1];
-
   // Add up the monthly profits
-  totalProfit = totalProfit + currentAmount;
+  totalProfit = totalProfit + finances[i][1];
 
   // Only calculate from the second month
   if (i > 0 ) {
-  
+
+    // Create variables for making comparison
+    let currentMonth = finances[i][0];
+    let currentAmount = finances[i][1];
+    let previousMonth = finances[i - 1][0];
+    let previousAmount = finances[i - 1][1];
+
+    let changeInPL = currentAmount - previousAmount;
+
+    averageChange = averageChange + changeInPL;
+
     // For all Profits
     if (currentAmount > 0) {
       // Check if current month profit is more than greatest saved so far and save the data point 
@@ -160,7 +166,7 @@ for (let i = 0; i < totalMonths; i++) {
     // For all Losses
     if (currentAmount < 0) {
       // Check if current month profit is less than greatest loss saved so far and save the data point 
-      if (greatestLoss[1] < currentAmount){
+      if (greatestLoss[1] > currentAmount){
         greatestLoss = [currentMonth, currentAmount];
       }
     }
@@ -169,13 +175,17 @@ for (let i = 0; i < totalMonths; i++) {
 
 }
 
+//Calculate the average change and round to 2 decimal places
+averageChange = averageChange / (totalMonths - 1);
+averageChange = averageChange.toFixed(2);
+
 // Output the analysis
 console.log(
 `Financial Analysis
 ----------------
 Total Months: ${totalMonths}
 Total: $${totalProfit}
-Average Change: -2315.12
+Average Change: ${averageChange}
 Greatest Increase in Profits/Losses: ${greatestProfit[0]} ($${greatestProfit[1]})
 Greatest Decrease in Profits/Losses: ${greatestLoss[0]} ($${greatestLoss[1]})
 `);
