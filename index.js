@@ -95,7 +95,7 @@ var finances = [
 // !The total number of months included in the dataset.
   // finances.length
 
-// The net total amount of Profit / Losses over the entire period.
+// !The net total amount of Profit / Losses over the entire period.
   // Need a variable for Profits/Losses
   // Need to be able to compare the data for the loop that we're on to the data from the previous loop
     // Need variables for current & previous once we start the loop
@@ -137,6 +137,9 @@ let averageChange = 0;
 // Loop the dataset
 for (let i = 0; i < finances.length; i++) {
 
+  // Add up the monthly profits
+  totalProfit = totalProfit + finances[i][1];
+
   // Only calculate from the second month
   if (i > 0 ) {
 
@@ -158,7 +161,7 @@ for (let i = 0; i < finances.length; i++) {
     }
 
     // For all Losses
-    if (monthProfit < 0 ) {
+    if (monthProfit < 0) {
       // Check if current month profit is less than greatest loss saved so far and save the data point 
       if (greatestLoss[1] > monthProfit){
         greatestLoss = [finances[i][0], monthProfit];
