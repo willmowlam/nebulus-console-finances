@@ -133,9 +133,6 @@ let greatestLoss = ["", 0];
 // average of the changes
 let averageChange = 0;
 
-// save all the changes in monthly P&L
-let changesInPL = [];
-
 // Loop the dataset
 for (let i = 0; i < totalMonths; i++) {
 
@@ -148,7 +145,6 @@ for (let i = 0; i < totalMonths; i++) {
     // Create variables for making comparison
     let currentMonth = finances[i][0];
     let currentAmount = finances[i][1];
-    let previousMonth = finances[i - 1][0];
     let previousAmount = finances[i - 1][1];
 
     let changeInPL = currentAmount - previousAmount;
