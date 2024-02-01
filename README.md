@@ -4,7 +4,7 @@ Analysis of the financial records of a company from a provided dataset.
 
 This is available to view deployed at the following URL:
 
-https://willmowlam.github.io/Console-Finances/
+https://willmowlam.github.io/nebulus-console-finances/
 
 ## Usage
 
